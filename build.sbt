@@ -24,7 +24,7 @@ lazy val angulate2 = project.in(file(".")).
   aggregate(plugin,stubs).
   settings(commonSettings: _*).
   settings(publishingSettings: _*).
-  settings( 
+  settings(
     name := "angulate2",
     addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
     libraryDependencies ++= Seq(
@@ -119,8 +119,7 @@ lazy val publishingSettings = Seq(
     </developers>
   )
 )
- 
+
 lazy val angulateDebugFlags = Seq(
   "Directive"
 ).map( f => s"-Xmacro-settings:angulate2.debug.$f" )
-

@@ -15,22 +15,30 @@ trait RouteDefinition extends js.Object {
   def path: js.UndefOr[String] = js.native
   def name: js.UndefOr[String] = js.native
   def component: js.UndefOr[JSType] = js.native
+  def redirectTo: js.UndefOr[String] = js.native
+  def pathMatch: js.UndefOr[String] = js.native
   def useAsDefault: Boolean = js.native
 }
 
 object RDef {
-  def apply(path: String = null,
-            name: String = null,
-            component: JSType = null,
-            useAsDefault: Boolean = false) : RouteDefinition = {
-    val d = js.Dynamic.literal()
-    if(path!=null)
-      d.path = path
-    if(name!=null)
-      d.name = name
-    if(component!=null)
-      d.component = component
-    d.useAsDefault = useAsDefault
+  def apply(
+    path: js.UndefOr[String] = js.undefined,
+    name: js.UndefOr[String] = js.undefined,
+    component: js.UndefOr[JSType] = js.undefined,
+    redirectTo: js.UndefOr[String] = js.undefined,
+    pathMatch: js.UndefOr[String] = js.undefined,
+    useAsDefault: Boolean = false
+  ) : RouteDefinition = {
+    val d = js.Dynamic.literal(
+      useAsDefault = useAsDefault
+    )
+
+    path.foreach(d.path = _)
+    name.foreach(d.name = _)
+    component.foreach(d.component = _)
+    redirectTo.foreach(d.redirectTo = _)
+    pathMatch.foreach(d.pathMatch = _)
+
     d.asInstanceOf[RouteDefinition]
   }
 }

@@ -35,4 +35,12 @@ object Router {
     def navigate(to: String, params: (String,_)*): IPromise[js.Any] =
       r.navigate(js.Array(to,js.Dictionary(params:_*)))
   }
+
+
+}
+
+@JSName("ng.router.provideRouter")
+object provideRouter extends js.Object {
+  @js.native
+  def apply(config: RouterConfig): js.Any = js.native
 }

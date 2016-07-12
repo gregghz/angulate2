@@ -22,7 +22,8 @@ class Component(selector: String = null,
                 template: String = null,
                 templateUrl: String = null,
                 directives: js.Array[js.Any] = null,
-                styles: js.Array[String] = null) extends StaticAnnotation {
+                styles: js.Array[String] = null,
+                styleUrls: js.Array[String] = null) extends StaticAnnotation {
   def macroTransform(annottees: Any*): Any = macro Component.Macro.impl
 }
 
@@ -42,7 +43,8 @@ object Component {
       "template",
       "templateUrl",
       "directives",
-      "styles")
+      "styles",
+      "styleUrls")
 
     def impl(annottees: c.Expr[Any]*) : c.Expr[Any] = annottees.map(_.tree).toList match {
       case (classDecl: ClassDef) :: Nil => modifiedDeclaration(classDecl)
@@ -106,7 +108,7 @@ object Component {
         q"""{@scalajs.js.annotation.JSExport($fullName)
              @scalajs.js.annotation.ScalaJSDefined
              @sjsx.SJSXStatic(1000, $angulateAnnotation )
-             @sjsx.SJSXRequire("angular2/core","ng.core")
+             @sjsx.SJSXRequire("ng.core","angluar2/core")
              class $name ( ..$params ) extends ..$base { ..$body; $log }
              @scalajs.js.annotation.JSExport($objName)
              @scalajs.js.annotation.ScalaJSDefined
@@ -123,5 +125,3 @@ object Component {
 
   }
 }
-
-

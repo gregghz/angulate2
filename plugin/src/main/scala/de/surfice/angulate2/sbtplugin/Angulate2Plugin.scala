@@ -26,7 +26,7 @@ object Angulate2Plugin extends sbt.AutoPlugin {
     addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
     libraryDependencies += DepBuilder.toScalaJSGroupID("de.surfice") %%% "angulate2" % Version.angulateVersion,
     sjsxSnippets <++= (ngBootstrap map boostrap),
-    sjsxDeps <++= ngBootstrap map ( d => if(d.isDefined) Seq(SJSXDependency("ng.platform.browser","angular2/platform/browser")) else Nil )
+    sjsxDeps <++= ngBootstrap map ( d => if(d.isDefined) Seq(SJSXDependency("ng.platform.browser","@angular/platform-browser-dynamic")) else Nil )
   )
 
   private def boostrap(comp: Option[String]): Seq[SJSXSnippet] = comp map {comp =>
