@@ -2,7 +2,7 @@ val sjsxVersion = "0.3.0-SNAPSHOT"
 
 lazy val commonSettings = Seq(
   organization := "de.surfice",
-  version := "0.1-SNAPSHOT",
+  version := "0.2-SNAPSHOT",
   scalaVersion := "2.11.8",
   scalacOptions ++= Seq("-deprecation","-unchecked","-feature","-language:implicitConversions","-Xlint"),
   autoCompilerPlugins := true,
