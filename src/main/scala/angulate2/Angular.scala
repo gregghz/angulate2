@@ -24,15 +24,3 @@ trait Angular extends js.Object {
   def NgIf: js.Object = js.native
 
 }
-
-@JSName("ng.platformBrowser.BrowserModule")
-@js.native
-object BrowserModule extends js.Object
-
-@JSName("ng.forms.FormsModule")
-@js.native
-object FormsModule extends js.Object
-
-@JSName("ng.http.HttpModule")
-@js.native
-object HttpModule extends js.Object
