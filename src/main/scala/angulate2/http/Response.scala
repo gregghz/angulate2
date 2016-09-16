@@ -5,7 +5,7 @@
 //               Distributed under the MIT License (see included LICENSE file)
 package angulate2.http
 
-import rxjs.core.IObservable
+import rxjs.core.Observable
 
 import scala.scalajs.js
 
@@ -38,8 +38,11 @@ trait Response extends js.Object {
 }
 
 object Response {
-  implicit final class RichResponse(val r: IObservable[Response]) extends AnyVal {
+  implicit final class RichResponse(val r: Observable[Response]) extends AnyVal {
+
+    private def f[T](r: Response): T = r.json[T]()
+
     @inline
-    def json[T]: IObservable[T] = r.map(_.json[T]())
+    def json[T]: Observable[T] = r.map(f[T] _)
   }
 }

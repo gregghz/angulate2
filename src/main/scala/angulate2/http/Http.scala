@@ -5,7 +5,7 @@
 //               Distributed under the MIT License (see included LICENSE file)
 package angulate2.http
 
-import rxjs.core.IObservable
+import rxjs.core.Observable
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
@@ -24,7 +24,7 @@ trait Http extends js.Object {
    * @param url
    * @param options
    */
-  def get(url: String, options: js.UndefOr[RequestOptionsArgs] = js.undefined): IObservable[Response] = js.native
+  def get(url: String, options: js.UndefOr[RequestOptionsArgs] = js.undefined): Observable[Response] = js.native
 
   /**
    * Performs a request with the `post` http method.
@@ -33,7 +33,7 @@ trait Http extends js.Object {
    * @param body
    * @param options
    */
-  def post(url: String, body: String, options: js.UndefOr[RequestOptionsArgs] = js.undefined): IObservable[Response] = js.native
+  def post(url: String, body: String, options: js.UndefOr[RequestOptionsArgs] = js.undefined): Observable[Response] = js.native
 
   /**
    * Performs a request with the `put` http method.
@@ -42,7 +42,7 @@ trait Http extends js.Object {
    * @param body
    * @param options
    */
-  def put(url: String, body: String, options: js.UndefOr[RequestOptionsArgs] = js.undefined): IObservable[Response] = js.native
+  def put(url: String, body: String, options: js.UndefOr[RequestOptionsArgs] = js.undefined): Observable[Response] = js.native
 
   /**
    * Performs a request with the `delete` http method.
@@ -50,16 +50,16 @@ trait Http extends js.Object {
    * @param url
    * @param options
    */
-  def delete(url: String, options: js.UndefOr[RequestOptionsArgs] = js.undefined): IObservable[Response] = js.native
+  def delete(url: String, options: js.UndefOr[RequestOptionsArgs] = js.undefined): Observable[Response] = js.native
 }
 
 object Http {
   implicit class RichHttp(val http: Http) extends AnyVal {
     @inline
-    final def postObject[T](url: String, obj: T, options: js.UndefOr[RequestOptionsArgs] = js.undefined): IObservable[Response] =
+    final def postObject[T](url: String, obj: T, options: js.UndefOr[RequestOptionsArgs] = js.undefined): Observable[Response] =
       http.post(url,js.JSON.stringify(obj.asInstanceOf[js.Any]),options)
     @inline
-    final def putObject[T](url: String, obj: T, options: js.UndefOr[RequestOptionsArgs] = js.undefined): IObservable[Response] =
+    final def putObject[T](url: String, obj: T, options: js.UndefOr[RequestOptionsArgs] = js.undefined): Observable[Response] =
       http.put(url,js.JSON.stringify(obj.asInstanceOf[js.Any]),options)
   }
 }

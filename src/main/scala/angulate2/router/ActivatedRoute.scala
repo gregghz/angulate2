@@ -1,6 +1,6 @@
 package angulate2.router
 
-import rxjs.core.IObservable
+import rxjs.core.Observable
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 import scala.scalajs.js.|
@@ -34,9 +34,9 @@ trait ActivatedRouteSnapshot extends js.Object {
 @JSName("ng.router.ActivatedRoute")
 trait ActivatedRoute extends js.Object {
   val snapshot: ActivatedRouteSnapshot = js.native
-  val url: IObservable[UrlPathWithParams] = js.native
-  val params: IObservable[js.Dynamic] = js.native
-  val data: IObservable[js.Any] = js.native
+  val url: Observable[UrlPathWithParams] = js.native
+  val params: Observable[js.Dynamic] = js.native
+  val data: Observable[js.Any] = js.native
   val outlet: String = js.native
   val component: Type | String = js.native
 }
